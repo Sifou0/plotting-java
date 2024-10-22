@@ -48,13 +48,8 @@ public class PlotUtils {
         List<Coordonates> coords = new ArrayList<>();
         // Horizontal and Vertical from input have the same size
         // Define the size of 1 and scale from it
-        int unitX = (int) (windowSize.getX() * 0.008);
-        int unitY = (int) (windowSize.getY() * 0.008);
-        System.out.println(unitX + " " + unitY);
-        for (int i = 0; i < input.getHorizontal().size(); i++) {
-            coords.add(new Coordonates(unitX * input.getHorizontal().get(i).intValue(), unitY * input.getVertical().get(i).intValue()));
-        }
-        coords.stream().forEach(System.out::println);
+        int nbOfInputs = input.getHorizontal().size();
+        int unitX = (int) (windowSize.getX() * 0.8 / nbOfInputs);
         return coords;
     }
 
