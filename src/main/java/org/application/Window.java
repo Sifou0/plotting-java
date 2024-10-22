@@ -1,4 +1,4 @@
-package org.example;
+package org.application;
 
 import javax.swing.*;
 import java.util.List;

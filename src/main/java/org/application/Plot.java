@@ -1,8 +1,7 @@
-package org.example;
+package org.application;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
 
 public class Plot extends JPanel {
 
@@ -19,6 +18,7 @@ public class Plot extends JPanel {
         this.abscissa = PlotUtils.getAbscissa(this.data, this.windowSize);
     }
 
+    // All the Plot verification are done here
     private void initPlot() {
         if (!PlotUtils.checkDataInput(this.data)) {
             // TODO: throw an error
