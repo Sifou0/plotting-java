@@ -1,5 +1,7 @@
 package org.application;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,10 +11,12 @@ public class Plot extends JPanel {
     private final Data data;
     private final Coordonates[] ordinate;
     private final Coordonates[] abscissa;
+    private List<Coordonates> points;
 
     public Plot(Coordonates windowSize, Data data) {
         this.windowSize = windowSize;
         this.data = data;
+        this.points = new ArrayList<Coordonates>();
         this.initPlot();
         this.ordinate = PlotUtils.getOrdinate(this.data, this.windowSize);
         this.abscissa = PlotUtils.getAbscissa(this.data, this.windowSize);
@@ -24,6 +28,7 @@ public class Plot extends JPanel {
             // TODO: throw an error
         }
         // TODO: data process so it can be plot-ed
+        this.points = PlotUtils.getAllCoordinates(this.data, this.windowSize);
     }
 
     @Override
@@ -33,5 +38,6 @@ public class Plot extends JPanel {
         g2d.setColor(Color.BLACK);
         g2d.drawLine(ordinate[0].getX(), ordinate[0].getY(), ordinate[1].getX(), ordinate[1].getY());
         g2d.drawLine(abscissa[0].getX(), abscissa[0].getY(), abscissa[1].getX(), abscissa[1].getY());
+        this.points.stream().forEach(point -> g2d.drawLine(point.getX(), point.getY(), point.getX(), point.getY()));
     }
 }

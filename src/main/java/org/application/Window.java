@@ -9,9 +9,9 @@ public class Window extends JFrame {
     private final Plot plot;
     private final Coordonates windowSize;
 
-    public Window() {
-        this.windowSize = new Coordonates(400,400);
-        this.plot = new Plot(this.windowSize,new Data(new Vector<>(List.of(1,2)),new Vector<>(List.of(1,2))));
+    public Window(Data data) {
+        this.windowSize = new Coordonates(400, 400);
+        this.plot = new Plot(this.windowSize, data);
         initWindow();
     }
 
@@ -22,8 +22,8 @@ public class Window extends JFrame {
         add(this.plot);
     }
 
-    public static void runWindow() {
-        SwingUtilities.invokeLater(() -> new Window().setVisible(true));
+    public static void runWindow(Data data) {
+        SwingUtilities.invokeLater(() -> new Window(data).setVisible(true));
     }
 
 }

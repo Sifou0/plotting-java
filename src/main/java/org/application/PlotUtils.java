@@ -1,5 +1,7 @@
 package org.application;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Vector;
 
@@ -39,6 +41,20 @@ public class PlotUtils {
         Coordonates[] coords = new Coordonates[2];
         coords[0] = new Coordonates((int) (windowSize.getX() * 0.1), (int) (windowSize.getY() * 0.1));
         coords[1] = new Coordonates((int) (windowSize.getX() * 0.1), (int) (windowSize.getY() * 0.9));
+        return coords;
+    }
+
+    public static List<Coordonates> getAllCoordinates(Data input, Coordonates windowSize) {
+        List<Coordonates> coords = new ArrayList<>();
+        // Horizontal and Vertical from input have the same size
+        // Define the size of 1 and scale from it
+        int unitX = (int) (windowSize.getX() * 0.008);
+        int unitY = (int) (windowSize.getY() * 0.008);
+        System.out.println(unitX + " " + unitY);
+        for (int i = 0; i < input.getHorizontal().size(); i++) {
+            coords.add(new Coordonates(unitX * input.getHorizontal().get(i).intValue(), unitY * input.getVertical().get(i).intValue()));
+        }
+        coords.stream().forEach(System.out::println);
         return coords;
     }
 
